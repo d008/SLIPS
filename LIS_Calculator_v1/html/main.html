@@ -1,0 +1,274 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>main</title><meta name="generator" content="MATLAB 8.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-05-17"><meta name="DC.source" content="main.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">Execute Header File</a></li><li><a href="#2">External Fluid</a></li><li><a href="#3">Lubricant Struct</a></li><li><a href="#4">Facility Struct</a></li><li><a href="#5">Surface Struct</a></li><li><a href="#6">Example Evaluations</a></li><li><a href="#7">USNA Example 1</a></li><li><a href="#8">USNA Re-tau= 1500 - Decane</a></li><li><a href="#9">USNA Re-tau= 1500 - Octane</a></li><li><a href="#10">USNA Re-tau= 1500 -Heptane</a></li><li><a href="#11">USNA Re-tau= 2000 - Decane</a></li><li><a href="#12">USNA Re-tau= 2000 - Octane</a></li><li><a href="#13">USNA Re-tau= 2000 - Heptane</a></li><li><a href="#14">JHU Parameters</a></li><li><a href="#15">Compile the tables</a></li></ul></div><h2>Execute Header File<a name="1"></a></h2><h2>External Fluid<a name="2"></a></h2><h2>Lubricant Struct<a name="3"></a></h2><h2>Facility Struct<a name="4"></a></h2><h2>Surface Struct<a name="5"></a></h2><h2>Example Evaluations<a name="6"></a></h2><h2>USNA Example 1<a name="7"></a></h2><h2>USNA Re-tau= 1500 - Decane<a name="8"></a></h2><h2>USNA Re-tau= 1500 - Octane<a name="9"></a></h2><h2>USNA Re-tau= 1500 -Heptane<a name="10"></a></h2><h2>USNA Re-tau= 2000 - Decane<a name="11"></a></h2><h2>USNA Re-tau= 2000 - Octane<a name="12"></a></h2><h2>USNA Re-tau= 2000 - Heptane<a name="13"></a></h2><h2>JHU Parameters<a name="14"></a></h2><h2>Compile the tables<a name="15"></a></h2><pre class="codeoutput">Width[micron],    Height[micron],   a,  N
+
+Geometry = 
+
+                        width    height    area_fraction      N   
+                        _____    ______    _____________    ______
+
+    Example             150      150       0.5              2.5752
+    USNA2_decane_big    500      750       0.8              1.0823
+    USNA2_octane_big    500      750       0.8              1.8482
+    USNA2_hepane_big    500      750       0.8              2.5752
+    USNA5_decane_big    500      750       0.8              1.0823
+    USNA5_octane_big    500      750       0.8              1.8482
+    USNA5_hepane_big    500      750       0.8              2.5752
+
+Re_tau,   u_tau[m/s],   tau_w[Pa],   viscous length[micron],   delta_99[mm],   U_e[m/s]
+
+Flow = 
+
+                        Re_tau    u_taus    tau_w     y_plus    delta_99     U_e 
+                        ______    ______    ______    ______    ________    _____
+
+    Example             199.25       0.1      9.98    10.038    0.002           4
+    USNA2_decane_big    1653.4    0.0461     2.121    21.773    0.036       1.269
+    USNA2_octane_big    1653.4    0.0461     2.121    21.773    0.036       1.269
+    USNA2_hepane_big    1653.4    0.0461     2.121    21.773    0.036       1.269
+    USNA5_decane_big    2543.8    0.0751    5.6287    13.366    0.034       1.934
+    USNA5_octane_big    2543.8    0.0751    5.6287    13.366    0.034       1.934
+    USNA5_hepane_big    2543.8    0.0751    5.6287    13.366    0.034       1.934
+
+L-inf (zero laplace)[mm],  L-inf (barrier)[mm], Weber_tau, Bond, Weber_slip, w_plus,  h-plus
+
+Determined = 
+
+                        L_inf1    L_inf2     We_tau        Bo        We_slip     w_plus    h_plus
+                        ______    ______    ________    _________    ________    ______    ______
+
+    Example             4.2012    11.714     0.02994    0.0013847    0.068856    14.944    14.944
+    USNA2_decane_big    31.804    88.678     0.02121     0.013132     0.13728    22.964    34.446
+    USNA2_octane_big    31.804    88.678     0.02121     0.014455     0.24766    22.964    34.446
+    USNA2_hepane_big    31.804    88.678     0.02121     0.015386     0.33211    22.964    34.446
+    USNA5_decane_big    11.984    33.415    0.056287     0.013132     0.81597    37.409    56.114
+    USNA5_octane_big    11.984    33.415    0.056287     0.014455      1.3905    37.409    56.114
+    USNA5_hepane_big    11.984    33.415    0.056287     0.015386      1.8032    37.409    56.114
+
+b[micron],b-plus, Drag Reduction, Re_cav/slip,    U_slip [m/s]
+
+DragProperties = 
+
+                          b       b_plus      DR      Re_cav    U_slip1
+                        ______    ______    ______    ______    _______
+
+    Example             16.509    1.6448    7.7979    39.999    0.15165
+    USNA2_decane_big    63.394    2.9115    12.618     46.25    0.11728
+    USNA2_octane_big    90.819    4.1711    18.077    102.16    0.15753
+    USNA2_hepane_big    109.76    5.0409    21.501    160.38    0.18242
+    USNA5_decane_big    63.394    4.7431    19.726    112.76    0.28594
+    USNA5_octane_big    90.819     6.795    26.855    242.07    0.37327
+    USNA5_hepane_big    109.76     8.212    31.077    373.71    0.42506
+
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Execute Header File
+SurfaceProcessheader
+%% External Fluid 
+Temp = 20;          %Water Temperature [Degree C]
+water = struct('rho',rho_water,'mu',mu_water(Temp),'nu',mu_water(Temp)/rho_water,'gamma' , 50E-3,'contAngle',60,'name','water');
+ext = water;
+%% Lubricant Struct
+%Included lubricants:
+% water, alkane(6-12), air
+
+%sampleLubricant = 
+%
+%          rho: 684 - kg/m^3
+%           mu: 3.8900e-04 - Pa.s
+%           nu: 5.6871e-07 - m^2/s
+%        gamma: 0.0500 - N/m
+%    contAngle: 60 - deg
+%         name: 'oil1'
+
+sampleLubricant = struct('rho',684,'mu',3.8900e-04,'nu',5.6871e-07,'gamma' ,0.0500,'contAngle',56,'name','oil1');
+
+%% Facility Struct
+%sampleFacility = 
+%
+%    u_tau: 0.1 - m/s
+%    delta: 0.0020 - m
+%    U_inf: 4 - m/s
+%     name: 'channel1'
+
+sampleFacility = struct('u_tau',0.1,'delta',2E-3,'U_inf',4,'name','channel1');
+
+%% Surface Struct
+%surf1 = 
+%
+%              w: 1.5000e-04 - microns
+%    aspectRatio: 1 - h/w
+%              a: 0.5000 - width/pitch
+%           name:'150_5_1'
+
+sampleSurface = struct('w',150E-6,'aspectRatio',1,'a',0.5,'name','150_5_1');
+%Lets try a new surface
+surf1 = struct('w',10E-6,'aspectRatio',1,'a',0.75,'name','trial1');
+surf2 = struct('w',500E-6,'aspectRatio',1.5,'a',0.8,'name','big');
+surf3 = struct('w',1.2E-3,'aspectRatio',1,'a',0.8,'name','big2');
+%% Example Evaluations
+lub = sampleLubricant;
+fac = sampleFacility;
+surface = sampleSurface;
+Names = {'Example'};
+SurfaceProcesshelp
+
+%% USNA Example 1
+%{
+%Prescribe our parameters
+lub = octane;
+fac = USNA2;
+surface = surf1;
+%Make a name
+Names = [Names;makeName(fac,lub,surface)];
+%Run the parameters
+SurfaceProcesshelp
+%}
+%% USNA Re-tau= 1500 - Decane
+lub = decane;
+fac = USNA2;
+surface = surf2;
+Names = [Names;makeName(fac,lub,surface)];
+%Run the parameters
+SurfaceProcesshelp
+%% USNA Re-tau= 1500 - Octane
+lub = octane;
+fac = USNA2;
+surface = surf2;
+Names = [Names;makeName(fac,lub,surface)];
+%Run the parameters
+SurfaceProcesshelp
+%% USNA Re-tau= 1500 -Heptane
+lub = heptane;
+fac = USNA2;
+surface = surf2;
+Names = [Names;makeName(fac,lub,surface)];
+%Run the parameters
+SurfaceProcesshelp
+
+%% USNA Re-tau= 2000 - Decane
+lub = decane;
+fac = USNA5;
+surface = surf2;
+Names = [Names;makeName(fac,lub,surface)];
+%Run the parameters
+SurfaceProcesshelp
+%% USNA Re-tau= 2000 - Octane
+lub = octane;
+fac = USNA5;
+surface = surf2;
+Names = [Names;makeName(fac,lub,surface)];
+%Run the parameters
+SurfaceProcesshelp
+%% USNA Re-tau= 2000 - Heptane
+lub = heptane;
+fac = USNA5;
+surface = surf2;
+Names = [Names;makeName(fac,lub,surface)];
+%Run the parameters
+SurfaceProcesshelp
+%% JHU Parameters
+%{
+lub = octane;
+fac = JHU9;
+surface = surf1;
+Names = [Names;makeName(fac,lub,surface)];
+
+SurfaceProcesshelp
+
+%% JHU Parameters
+lub = octane;
+fac = JHU51;
+surface = surf1;
+Names = [Names;makeName(fac,lub,surface)];
+
+SurfaceProcesshelp
+%}
+%% Compile the tables
+%Adjust units
+width = width*10^6;
+height = height*10^6;
+y_plus = y_plus*10^6;
+L_inf1=L_inf1*1000; L_inf2=L_inf2*1000;
+b =b*10^6;
+N =Ns;
+
+disp('Width[micron],    Height[micron],   a,  N')
+Geometry = table(width,height,area_fraction,N,'RowNames',Names)
+
+disp('Re_tau,   u_tau[m/s],   tau_w[Pa],   viscous length[micron],   delta_99[mm],   U_e[m/s]')
+Flow = table(Re_tau,u_taus,tau_w,y_plus,delta_99,U_e,'RowNames',Names)
+
+disp('L-inf (zero laplace)[mm],  L-inf (barrier)[mm], Weber_tau, Bond, Weber_slip, w_plus,  h-plus')
+Determined = table(L_inf1,L_inf2,We_tau,Bo,We_slip,w_plus,h_plus,'RowNames',Names)
+
+disp('b[micron],b-plus, Drag Reduction, Re_cav/slip,    U_slip [m/s]')
+DragProperties = table(b,b_plus,DR, Re_cav,U_slip1,'RowNames',Names)
+##### SOURCE END #####
+--></body></html>
