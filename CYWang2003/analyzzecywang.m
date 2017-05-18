@@ -1,8 +1,8 @@
 %clear all
 %b(a,h,N)
 SandH2014
-load('cywang2003cdata.mat')
-load('matlab.mat')
+load('cywang2003bdata.mat')
+%load('matlab.mat')
 close all
 [H,A,n] = meshgrid(h,a,h);
 bnorm = b./B_l(A,n,20);
